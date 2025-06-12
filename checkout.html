@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đặt hàng</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f7f7f7;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        color: #ff6699;
+      }
+
+      .cart-summary,
+      .customer-info {
+        max-width: 600px;
+        margin: 20px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .cart-summary ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .cart-summary li {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .customer-info label {
+        display: block;
+        margin-top: 15px;
+      }
+
+      .customer-info input,
+      .customer-info textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        margin-top: 5px;
+      }
+
+      button {
+        background-color: #ff6699;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+
+      button:hover {
+        background-color: #ff3366;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🧾 Xác nhận đơn hàng</h1>
+    <div style="text-align: center; margin-top: 10px">
+      <button onclick="window.location.href='index.html'">
+        ⬅️ Quay lại trang chủ
+      </button>
+    </div>
+
+    <div class="cart-summary">
+      <h2>Sản phẩm đã chọn</h2>
+      <ul id="cart-list"></ul>
+      <p><strong>Tổng tiền:</strong> <span id="total-price">0</span> VND</p>
+    </div>
+
+    <div class="customer-info">
+      <h2>Thông tin khách hàng</h2>
+      <label
+        >Họ và tên:
+        <input type="text" id="name" required />
+      </label>
+      <label
+        >Số điện thoại:
+        <input type="tel" id="phone" required />
+      </label>
+      <label
+        >Địa chỉ giao hàng:
+        <textarea id="address" rows="3" required></textarea>
+      </label>
+
+      <button onclick="submitOrder()">Xác nhận đặt hàng</button>
+    </div>
+
+    <script>
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const list = document.getElementById("cart-list");
+      const total = document.getElementById("total-price");
+
+      let sum = 0;
+      cart.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = `${item.name} - ${item.price.toLocaleString()} VND`;
+        list.appendChild(li);
+        sum += item.price;
+      });
+      total.innerText = sum.toLocaleString();
+
+      function submitOrder() {
+        const name = document.getElementById("name").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const address = document.getElementById("address").value.trim();
+
+        if (!name || !phone || !address) {
+          alert("Vui lòng điền đầy đủ thông tin!");
+          return;
+        }
+
+        alert(`✅ Cảm ơn ${name}! Đơn hàng của bạn đã được ghi nhận.`);
+        localStorage.removeItem("cart");
+        window.location.href = "index.html"; // Quay về trang chủ
+      }
+    </script>
+  </body>
+</html>

@@ -1,1 +1,121 @@
-<h1>Hello World</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tiệm Trà Sữa</title>
+
+    <!-- Link to CSS -->
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Tiệm Trà Sữa</h1>
+      <nav>
+        <ul class="menu">
+          <li><a href="#">Trang chủ</a></li>
+          <li class="dropdown">
+            <a href="#">Sản phẩm ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Cà phê</a></li>
+              <li><a href="#">Trà sữa</a></li>
+              <li><a href="#">Sinh tố</a></li>
+              <li><a href="#">Nước ép</a></li>
+              <li><a href="#">Thức ăn nhanh</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Giới thiệu</a></li>
+          <li><a href="#">Liên hệ</a></li>
+          <li><a href="#">Tuyển dụng</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- <div class="cart">
+      🛒 Giỏ hàng: <span id="cart-count">0</span> sản phẩm | Tổng tiền:
+      <span id="cart-total">0</span>VND
+    </div> -->
+
+    <!-- Icon giỏ hàng -->
+    <div class="cart-icon" onclick="toggleCartPopup()">🛒</div>
+
+    <!-- Popup giỏ hàng -->
+    <div id="cart-popup" class="cart-popup">
+      <h3>Giỏ hàng của bạn</h3>
+      <ul id="cart-items"></ul>
+      <p><strong>Tổng tiền:</strong> <span id="popup-total">0</span> VND</p>
+      <button onclick="goToCheckout()">Đi đến đặt hàng</button>
+    </div>
+
+    <div class="container">
+      <div class="product">
+        <img
+          src="https://via.placeholder.com/250x200.png?text=Trà+Sữa+Truyền+Thống"
+          alt="Trà sữa truyền thống"
+        />
+        <h3>Trà Sữa Truyền Thống</h3>
+        <p>Giá: 30.000₫</p>
+        <!-- <button onclick="addToCart(30000)">Thêm vào giỏ</button> -->
+        <button onclick="addToCart(30000, 'Trà Sữa Truyền Thống')">
+          Thêm vào giỏ
+        </button>
+      </div>
+
+      <div class="product">
+        <img
+          src="https://via.placeholder.com/250x200.png?text=Trà+Sữa+Matcha"
+          alt="Trà sữa matcha"
+        />
+        <h3>Trà Sữa Matcha</h3>
+        <p>Giá: 35.000₫</p>
+        <!-- <button onclick="addToCart(35000)">Thêm vào giỏ</button> -->
+        <button onclick="addToCart(30000, 'Trà Sữa Matcha')">
+          Thêm vào giỏ
+        </button>
+      </div>
+
+      <div class="product">
+        <img
+          src="https://via.placeholder.com/250x200.png?text=Trà+Sữa+Socola"
+          alt="Trà sữa socola"
+        />
+        <h3>Trà Sữa Socola</h3>
+        <p>Giá: 40.000₫</p>
+        <!-- <button onclick="addToCart(40000)">Thêm vào giỏ</button> -->
+        <button onclick="addToCart(30000, 'Trà Sữa Socola')">
+          Thêm vào giỏ
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-about">
+          <h3>🧋 Tiệm Trà Sữa Đêy</h3>
+          <p>
+            Chuyên phục vụ trà sữa tươi ngon, nguyên liệu chất lượng, không gian
+            xinh xắn dành cho bạn trẻ yêu thích sự năng động và ngọt ngào.
+          </p>
+          <p>Địa chỉ: 123 Đường Ngon Lành, Quận Tươi Tắn, TP.HCM</p>
+          <p>Hotline: 0123 456 789</p>
+        </div>
+        <div class="footer-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.444000391645!2d106.70042457587235!3d10.776377259190334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1d098ecf7f%3A0xc680cc7b6e2a5a6e!2zQ2FmZSBob3VzZQ!5e0!3m2!1svi!2s!4v1718100000000"
+            width="100%"
+            height="200"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          >
+          </iframe>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Link to JS -->
+    <script src="index.js"></script>
+  </body>
+</html>
