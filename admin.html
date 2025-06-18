@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Tiệm Trà Sữa</title>
+  <link rel="stylesheet" href="./assets/admin.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+  <div class="admin-container">
+    <aside class="sidebar">
+      <h2>Admin Panel</h2>
+      <ul>
+        <li onclick="showSection('employees')">Quản lý nhân viên</li>
+        <li onclick="showSection('products')">Quản lý hàng bán</li>
+        <li onclick="showSection('sales')">Lượt mua</li>
+        <li onclick="showSection('best-sellers')">Hàng bán chạy</li>
+        <li onclick="showSection('revenue')">Doanh số tháng</li>
+      </ul>
+    </aside>
+
+    <main class="content">
+      <section id="employees" class="section hidden">
+        <h2>Quản lý nhân viên</h2>
+        <button onclick="openForm('add-employee')">➕ Thêm nhân viên</button>
+        <input type="file" onchange="importFromExcel(event, 'employee-table')" />
+        <table id="employee-table" class="data-table">
+          <thead>
+            <tr><th>Tên</th><th>Email</th><th>Ca làm</th><th>Hành động</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section id="products" class="section hidden">
+        <h2>Quản lý hàng bán</h2>
+        <button onclick="openForm('add-product')">➕ Thêm sản phẩm</button>
+        <input type="file" onchange="importFromExcel(event, 'product-table')" />
+        <table id="product-table" class="data-table">
+          <thead>
+            <tr><th>Tên SP</th><th>Giá</th><th>Tồn kho</th><th>Hành động</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section id="sales" class="section hidden">
+        <h2>Lượt mua</h2>
+        <table class="data-table">
+          <thead><tr><th>Mã đơn</th><th>Khách hàng</th><th>Ngày</th><th>Tổng tiền</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section id="best-sellers" class="section hidden">
+        <h2>Hàng bán chạy</h2>
+        <table class="data-table">
+          <thead><tr><th>Sản phẩm</th><th>Lượt bán</th><th>Thời gian</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section id="revenue" class="section hidden">
+        <h2>Doanh số tháng</h2>
+        <canvas id="revenueChart" width="600" height="300"></canvas>
+      </section>
+    </main>
+  </div>
+
+  <div id="form-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close" onclick="closeForm()">×</span>
+      <h3 id="form-title"></h3>
+      <form id="data-form">
+        <!-- nội dung sẽ chèn bằng JS -->
+      </form>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
